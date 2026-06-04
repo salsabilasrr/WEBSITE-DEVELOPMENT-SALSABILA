@@ -1,0 +1,239 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biodata Pastel</title>
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body{
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #d9f7ff, #fff2b2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      overflow-x: hidden;
+    }
+
+    .card{
+      width: 900px;
+      max-width: 100%;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blob1, .blob2{
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .blob1{
+      width: 250px;
+      height: 250px;
+      background: #ffc8dd;
+      top: -80px;
+      right: -80px;
+    }
+
+    .blob2{
+      width: 180px;
+      height: 180px;
+      background: #cdb4db;
+      bottom: -60px;
+      left: -60px;
+    }
+
+    .top{
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .profile-img{
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 8px solid white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .title h1{
+      font-size: 42px;
+      color: #6d597a;
+    }
+
+    .title p{
+      margin-top: 8px;
+      color: #555;
+      font-size: 18px;
+    }
+
+    .section{
+      margin-top: 35px;
+    }
+
+    .section h2{
+      color: #b56576;
+      margin-bottom: 15px;
+      font-size: 28px;
+    }
+
+    .bio-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 20px;
+    }
+
+    .box{
+      background: white;
+      padding: 18px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .box:hover{
+      transform: translateY(-5px);
+    }
+
+    .box h3{
+      color: #6d597a;
+      margin-bottom: 8px;
+    }
+
+    .box p{
+      color: #555;
+    }
+
+    .hobby-list{
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .hobby{
+      background: #ffe5ec;
+      padding: 12px 20px;
+      border-radius: 50px;
+      color: #6d597a;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .hobby:hover{
+      background: #ffc8dd;
+      transform: scale(1.05);
+    }
+
+    .footer{
+      margin-top: 35px;
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+    }
+
+    @media(max-width:700px){
+      .top{
+        justify-content: center;
+        text-align: center;
+      }
+
+      .title h1{
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="blob1"></div>
+    <div class="blob2"></div>
+
+    <div class="top">
+      <img src="https://i.pinimg.com/736x/67/2c/6f/672c6f87a9ec3c59df2df3b3e6f5d8e1.jpg" 
+      alt="Foto Profil" class="profile-img">
+
+      <div class="title">
+        <h1>SALSA</h1>
+        <p>Mahasiswa </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>✨ Biodata</h2>
+
+      <div class="bio-grid">
+
+        <div class="box">
+          <h3>Nama Lengkap</h3>
+          <p>Salsabila Suci Ramadhani</p>
+        </div>
+
+        <div class="box">
+          <h3>Tanggal Lahir</h3>
+          <p>05 Oktober 2006</p>
+        </div>
+
+        <div class="box">
+          <h3>Alamat</h3>
+          <p>Tangerang, Banten</p>
+        </div>
+
+        <div class="box">
+          <h3>Email</h3>
+          <p>sucirsalsabila@email.com</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🎀 Hobi</h2>
+
+      <div class="hobby-list">
+        <div class="hobby">Membaca</div>
+        <div class="hobby">Desain</div>
+        <div class="hobby">Menulis</div>
+        <div class="hobby">Musik</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>💖 Tentang Saya</h2>
+
+      <div class="box">
+        <p>
+          Halo! Saya seorang yang yang suka mengeksplor hal baru, menyukai desain yang indah, 
+          dan percaya bahwa proses kecil bisa membawa perubahan besar.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      © 2026 | Biodata Pastel
+    </div>
+
+  </div>
+
+</body>
+</html>
+```

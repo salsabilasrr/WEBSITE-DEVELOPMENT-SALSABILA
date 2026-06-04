@@ -1,0 +1,208 @@
+```html id="Jejak Rasa Kuningan"
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jejak Rasa Kuningan</title>
+
+  <style>
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body{
+      background: linear-gradient(135deg,#fff8e1,#fde68a,#795548);
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    .container{
+      width: 1200px;
+      max-width: 100%;
+      margin: auto;
+    }
+
+    .title{
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .title h1{
+      font-size: 55px;
+      color: #7c2d12;
+    }
+
+    .title p{
+      margin-top: 10px;
+      color: #92400e;
+      font-size: 18px;
+    }
+
+    .menu-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
+      gap: 30px;
+    }
+
+    .card{
+      background: rgba(255,255,255,0.75);
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: 0.4s;
+      position: relative;
+    }
+
+    .card:hover{
+      transform: translateY(-10px);
+    }
+
+    .card img{
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .content{
+      padding: 22px;
+    }
+
+    .content h2{
+      color: #7c2d12;
+      margin-bottom: 10px;
+    }
+
+    .content p{
+      color: #78350f;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .price{
+      margin-top: 15px;
+      display: inline-block;
+      background: #b45309;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-weight: bold;
+    }
+
+    .label{
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #dc2626;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="title">
+      <h1>🍛 Jejak Rasa Kuningan</h1>
+      <p>Aneka kuliner khas Kuningan, Jawa Barat yang lezat dan menggugah selera</p>
+    </div>
+
+    <div class="menu-grid">
+
+      <!-- CARD 1 -->
+      <div class="card">
+
+        <div class="label">Favorit</div>
+
+        <img src="https://cdn.phototourl.com/free/2026-06-03-93b26971-c2e5-4cb6-b5b7-3252317f3cc9.jpg"
+        alt="Hucap">
+
+        <div class="content">
+          <h2>Hucap</h2>
+
+          <p>
+            Tahu goreng dan ketupat yang disiram kecap manis dan 
+            bumbu kacang.
+          </p>
+
+          <div class="price">Rp 15.000</div>
+        </div>
+
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="card">
+
+        <img src="https://cdn.phototourl.com/free/2026-06-03-f66fb189-34df-4c46-b921-0096bb83c9a5.jpg"
+        alt="Bubur Sop Kambing">
+
+        <div class="content">
+          <h2>Bubur Sop Kambing</h2>
+
+          <p>
+             Bubur lembut dengan kuah sop kambing gurih, disajikan 
+            dengan daging kambing dan aroma khas yang menggugah selera.
+          </p>
+
+          <div class="price">Rp 25.000</div>
+        </div>
+
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="card">
+
+        <div class="label"></div>
+
+        <img src="https://cdn.phototourl.com/free/2026-06-03-d1a8a178-865d-483d-ba86-aff1c7b08e02.jpg"
+        alt="Peuyeum Ketan">
+
+        <div class="content">
+          <h2>peuyeum Ketan</h2>
+
+          <p>
+            Ketan yang difermentasi menggunakan ragi
+            sehingga memiliki rasa yang manis dan lembut.
+          </p>
+
+          <div class="price">Rp 20.000</div>
+        </div>
+
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="card">
+
+        <img src="https://cdn.phototourl.com/free/2026-06-03-35a30ada-5ea4-4e4c-b7c1-2deeaaaee539.jpg"
+        alt="Opak Ketan">
+
+        <div class="content">
+          <h2>Opak Ketan Bakar</h2>
+
+          <p>
+            Camilan tradisional yang terbuat dari beras ketan,
+            dibentuk tipis lalu dipanggang.
+          </p>
+
+          <div class="price">Rp 18.000</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
+```
