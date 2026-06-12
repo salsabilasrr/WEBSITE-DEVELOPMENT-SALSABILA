@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+}
+
+.navbar{
+    display: flex;                  /* Flexbox */
+    justify-content: space-between; /* Logo kiri, menu kanan */
+    align-items: center;            /* Rata tengah vertikal */
+    background-color: #3498db;
+    padding: 15px 50px;
+}
+
+.logo{
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu{
+    display: flex; /* Flexbox untuk menu */
+    list-style: none;
+    gap: 20px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.menu a:hover{
+    color: yellow;
+}

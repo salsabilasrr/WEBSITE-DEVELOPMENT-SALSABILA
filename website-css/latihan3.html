@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galeri Foto Pastel</title>
+  <link rel="stylesheet" href="style3.css" />
+</head>
+<body>
+
+  <div class="gallery-header">
+    <h1>🌸 Galeri Foto</h1>
+    <p>Klik foto untuk melihat detail & mengunduh</p>
+  </div>
+
+  <div class="filter-bar" id="filters">
+    <button class="filter-btn active" onclick="filterGallery('all', this)">Semua</button>
+    <button class="filter-btn" onclick="filterGallery('alam', this)">🌿 Alam</button>
+    <button class="filter-btn" onclick="filterGallery('kota', this)">🏙️ Kota</button>
+    <button class="filter-btn" onclick="filterGallery('kuliner', this)">🍰 Kuliner</button>
+    <button class="filter-btn" onclick="filterGallery('hewan', this)">🐾 Hewan</button>
+  </div>
+
+  <div class="gallery-grid" id="gallery"></div>
+
+  <div class="stats-bar" id="stats"></div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lb-inner">
+      <div class="lb-thumb" id="lb-thumb"></div>
+      <div class="lb-title" id="lb-title"></div>
+      <div class="lb-meta" id="lb-meta"></div>
+      
+      <div class="lb-actions">
+        <a id="lb-download-btn" href="#" download class="lb-btn btn-download">💾 Simpan Foto</a>
+        <button class="lb-btn btn-close" onclick="document.getElementById('lightbox').classList.remove('open')">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Properti 'emoji' diganti menjadi 'img' yang berisi path/alamat file gambar
+    // Pastikan file gambar ini ada di folder yang sama atau sesuaikan path-nya (misal: "images/sakura.jpg")
+    const photos = [
+      { img: "https://cdn.phototourl.com/free/2026-06-11-19f4eccc-d62d-42e2-85ff-4f1ee1e2aca4.jpg",      title: "Bunga",      cat: "alam",    date: "Maret 2024",     bg: "#fce4ec", badge: "Favorit", badgeBg: "#f48fb1", badgeColor: "#880e4f" },
+      { img: "https://cdn.phototourl.com/free/2026-06-11-3e2e4f59-e662-4a1b-a5a4-4ab00591fdd5.jpg",        title: "Kota Malam",        cat: "kota",    date: "April 2024",     bg: "#e3f2fd", badge: null },
+      { img: "https://cdn.phototourl.com/free/2026-06-11-1872d28b-648e-46dc-8c84-c702f2d037f9.jpg",        title: "Strawberry Cake",   cat: "kuliner", date: "Mei 2024",       bg: "#fff3e0", badge: "Baru",    badgeBg: "#ffcc80", badgeColor: "#e65100" },
+      { img: "https://cdn.phototourl.com/free/2026-06-11-68205a79-26a6-4b04-bfd7-71bc79661f89.jpg",      title: "Kucing Lucu",        cat: "hewan",   date: "Februari 2024",  bg: "#f3e5f5", badge: null },
+      { img: "https://cdn.phototourl.com/free/2026-06-11-d02add2e-3713-4dec-82c2-b5b24ee08661.jpg",      title: "Pantai",        cat: "alam",    date: "Juni 2024",      bg: "#e0f7fa", badge: null },
+      { img: "https://cdn.phototourl.com/free/2026-06-11-b2312b01-97ce-451e-a71c-04c6a4dd1066.jpg",      title: "Sunset Kota",        cat: "kota",    date: "Juli 2024",      bg: "#fce4ec", badge: "Populer",badgeBg: "#f48fb1", badgeColor: "#880e4f" },
+      { img: "https://cdn.phototourl.com/free/2026-06-11-250733e1-1a98-437a-8376-dea1d6b9fe7a.jpg",       title: "Donut",  cat: "kuliner", date: "Januari 2024",   bg: "#e8f5e9", badge: null },
+      { img: "https://cdn.phototourl.com/free/2026-06-11-dd30ddcb-2c71-4dc6-acd8-a6af62ade23e.jpg",        title: "Kupu-Kupu",          cat: "hewan",   date: "April 2024",     bg: "#fffde7", badge: null },
+      { img: "https://cdn.phototourl.com/free/2026-06-11-0ac7f7aa-414e-4ce9-90f6-f57c21175fa7.jpg",      title: "Pegunungan",         cat: "alam",    date: "Agustus 2024",   bg: "#f3e5f5", badge: null },
+      { img: "https://cdn.phototourl.com/free/2026-06-11-0411aba1-bdfb-4987-93a4-c53fb8a87c30.jpg",    title: "Jembatan",           cat: "kota",    date: "September 2024", bg: "#e8eaf6", badge: null },
+      { img: "https://cdn.phototourl.com/free/2026-06-11-cbae5c25-3e32-470c-8a43-db9cbe6eaf7f.jpg",     title: "Cupcake",            cat: "kuliner", date: "Oktober 2024",   bg: "#fce4ec", badge: "Baru",   badgeBg: "#ffcc80", badgeColor: "#e65100" },
+      { img: "https://cdn.phototourl.com/free/2026-06-11-62ebd2dd-8492-4ca7-9b2e-229bf9353f68.jpg",      title: "Anjing Lucu",     cat: "hewan",   date: "November 2024",  bg: "#e0f2f1", badge: null },
+    ];
+
+    const gallery = document.getElementById("gallery");
+    const stats   = document.getElementById("stats");
+
+    function renderGallery(filter) {
+      const visible = filter === "all" ? photos : photos.filter(p => p.cat === filter);
+      gallery.innerHTML = "";
+
+      visible.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "photo-card";
+        card.innerHTML = `
+          <div class="photo-thumb" style="background:${p.bg}">
+            <img src="${p.img}" alt="${p.title}" class="gallery-img" />
+            ${p.badge ? `<div class="badge" style="background:${p.badgeBg};color:${p.badgeColor}">${p.badge}</div>` : ""}
+            <div class="photo-label">
+              <span>${p.title}</span>
+              <small>${p.date}</small>
+            </div>
+          </div>
+        `;
+        card.onclick = () => openLightbox(p);
+        gallery.appendChild(card);
+      });
+
+      const cats  = { alam: 0, kota: 0, kuliner: 0, hewan: 0 };
+      photos.forEach(p => cats[p.cat]++);
+      const labels = { alam: "🌿 Alam", kota: "🏙️ Kota", kuliner: "🍰 Kuliner", hewan: "🐾 Hewan" };
+      const pillColors = {
+        alam:    ["#e8f5e9","#2e7d32"],
+        kota:    ["#e3f2fd","#1565c0"],
+        kuliner: ["#fff8e1","#e65100"],
+        hewan:   ["#f3e5f5","#6a1b9a"]
+      };
+
+      stats.innerHTML = Object.entries(cats).map(([k, v]) =>
+        `<span class="stat-pill" style="background:${pillColors[k][0]};color:${pillColors[k][1]}">${labels[k]} · ${v}</span>`
+      ).join("");
+    }
+
+    function filterGallery(cat, btn) {
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderGallery(cat);
+    }
+
+    function openLightbox(p) {
+      // Mengisi detail gambar di lightbox beserta setelan tombol download
+      document.getElementById("lb-thumb").innerHTML = `<img src="${p.img}" alt="${p.title}" class="lightbox-img" />`;
+      document.getElementById("lb-title").textContent = p.title;
+      document.getElementById("lb-meta").textContent = `📅 ${p.date}  ·  🏷️ ${p.cat.charAt(0).toUpperCase() + p.cat.slice(1)}`;
+      
+      // Setup link download otomatis
+      const downloadBtn = document.getElementById("lb-download-btn");
+      downloadBtn.href = p.img;
+      downloadBtn.download = p.title + ".jpg"; // Nama file saat disimpan
+
+      document.getElementById("lightbox").classList.add("open");
+    }
+
+    function closeLightbox(e) {
+      if (e.target.id === "lightbox") document.getElementById("lightbox").classList.remove("open");
+    }
+
+    renderGallery("all");
+  </script>
+</body>
+</html>

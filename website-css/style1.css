@@ -1,0 +1,181 @@
+/* --- Reset & Variabel Global --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+:root {
+    --bg-color: #f0fdf4;       /* Hijau mint sangat muda untuk latar belakang */
+    --primary: #4ade80;        /* Hijau neon cerah */
+    --secondary: #facc15;      /* Kuning cerah */
+    --accent: #f472b6;         /* Pink cerah */
+    --dark: #1e293b;           /* Biru gelap (untuk teks & shadow agar kontras) */
+    --white: #ffffff;
+    --border-style: 4px solid var(--dark); /* Gaya border tebal khas Neo-Brutalism */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- Layout Container --- */
+.container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* --- Gaya Kartu Utama (Profile Card) --- */
+.profile-card {
+    background: var(--white);
+    border: var(--border-style);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    box-shadow: 8px 8px 0px var(--dark); /* Efek shadow kaku yang unik */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.profile-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px var(--dark);
+}
+
+.avatar-container {
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: var(--border-style);
+    background-color: var(--primary);
+    object-fit: cover;
+}
+
+.profile-info h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.highlight {
+    background-color: var(--primary);
+    padding: 0 8px;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 16px;
+}
+
+.bio {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* --- Grid untuk Kartu Tambahan --- */
+.grid-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.card {
+    border: var(--border-style);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 6px 6px 0px var(--dark);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0px var(--dark);
+}
+
+/* Warna khusus tiap kartu */
+.yellow-card { background-color: var(--secondary); }
+.pink-card { background-color: var(--accent); }
+
+.card h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+/* --- List Keahlian --- */
+.skills-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills-list li {
+    background: var(--white);
+    border: 2px solid var(--dark);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* --- Tombol Media Sosial --- */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: var(--dark);
+    background: var(--white);
+    border: 2px solid var(--dark);
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 3px 3px 0px var(--dark);
+    transition: all 0.1s ease;
+}
+
+.btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--dark);
+    background-color: var(--dark);
+    color: var(--white);
+}
+
+/* --- Responsive Design (Untuk HP) --- */
+@media (max-width: 680px) {
+    .profile-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .grid-content {
+        grid-template-columns: 1fr;
+    }
+}
